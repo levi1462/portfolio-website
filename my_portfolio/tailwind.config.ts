@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        blink: 'blink 1s steps(1) infinite',
+      },
+      keyframes: {
+        blink: {
+          '0%, 100%': { opacity: '0' },
+          '50%': { opacity: '1' },
+        },
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
