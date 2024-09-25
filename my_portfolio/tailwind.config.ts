@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        blink: 'blink 1s steps(1) infinite',
+        blink: 'blink .5s steps(1) infinite',
       },
       keyframes: {
         blink: {
