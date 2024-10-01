@@ -4,8 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 //import { ArrowRight } from "lucide-react";
 
+interface TypingEffectResult {
+  displayedText: string;
+  isTypingComplete: boolean;
+}
+
 function useTypingEffect(text: string, speed: number = 50) {
   const [displayedText, setDisplayedText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
   useEffect(() => {
     let i = 0;
     const typingInterval = setInterval(() => {
@@ -14,6 +20,7 @@ function useTypingEffect(text: string, speed: number = 50) {
         i++;
       } else {
         clearInterval(typingInterval);
+        setIsTypingComplete(true);
       }
     }, speed);
     return () => {
@@ -21,11 +28,14 @@ function useTypingEffect(text: string, speed: number = 50) {
     };
   }, [text, speed]);
 
-  return displayedText;
+  return { displayedText, isTypingComplete };
 }
 
 export default function Home() {
-  const typedText = useTypingEffect("Hello, my name is Levi Mickelson", 200);
+  const { displayedText, isTypingComplete } = useTypingEffect(
+    "Hello, my name is Levi Mickelson",
+    150
+  );
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 flex flex-col">
       <nav className="bg-gray-800 bg-opacity-50 backdrop-blur-md">
@@ -53,17 +63,21 @@ export default function Home() {
         <div className="text-center">
           <h1 className="text-5xl font-bold text-white mb-6 h-20 min-h-[5rem]">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600">
-              {typedText}
+              {displayedText}
             </span>
-            <span className="inline-block w-1 h-10 ml-1 bg-teal-400 animate-blink"></span>
+            {!isTypingComplete && (
+              <span className="inline-block w-1 h-10 ml-1 bg-teal-400 animate-blink"></span>
+            )}
           </h1>
           <h3 className="text-2xl text-gray-300 mt-4 opacity-80">
             Full-stack Developer & Web Designer
           </h3>
           <div className="mt-8 flex justify-center">
-            <button className="group bg-transparent border-2 border-teal-400 text-teal-400 px-6 py-3 rounded-full font-semibold hover:bg-teal-400 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-50 flex items-center">
-              More About Me
-            </button>
+            <Link href="/about" passHref>
+              <button className="group bg-transparent border-2 border-teal-400 text-teal-400 px-6 py-3 rounded-full font-semibold hover:bg-teal-400 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-50 flex items-center">
+                More About Me
+              </button>
+            </Link>
           </div>
         </div>
       </main>
