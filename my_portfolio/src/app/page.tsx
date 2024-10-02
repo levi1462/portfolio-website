@@ -34,7 +34,7 @@ function useTypingEffect(text: string, speed: number = 50) {
 export default function Home() {
   const { displayedText, isTypingComplete } = useTypingEffect(
     "Hello, my name is Levi Mickelson",
-    150
+    125
   );
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 flex flex-col">
