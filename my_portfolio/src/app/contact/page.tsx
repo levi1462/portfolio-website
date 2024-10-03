@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Mail, Github, Linkedin, ArrowRight } from "lucide-react";
+import { ThemeProvider, useTheme } from "../contexts/ThemeContexts";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -12,6 +14,7 @@ export default function Contact() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  const { theme } = useTheme();
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
       <nav className="bg-gray-800 bg-opacity-50 backdrop-blur-md sticky top-0 z-50">
@@ -35,6 +38,7 @@ export default function Contact() {
                   {item}
                 </Link>
               ))}
+              <ThemeToggle />
             </div>
           </div>
         </div>

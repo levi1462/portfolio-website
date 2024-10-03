@@ -1,4 +1,5 @@
 import "./global.css";
+import { ThemeProvider } from "./contexts/ThemeContexts";
 export const metadata = {
   title: "Portfolio",
   description: "Levi Mickelsoson portfolio website",
@@ -11,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

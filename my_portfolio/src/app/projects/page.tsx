@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ArrowRight } from "lucide-react";
+import { ThemeProvider, useTheme } from "../contexts/ThemeContexts";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 interface Project {
   id: number;
@@ -141,8 +143,16 @@ export default function () {
     selectedCategory === "All"
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
+
+  const { theme } = useTheme();
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+    <div
+      className={`min-h-screen ${
+        theme === "dark"
+          ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700"
+          : "bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300"
+      }`}
+    >
       <nav className="bg-gray-800 bg-opacity-50 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -164,6 +174,7 @@ export default function () {
                   {item}
                 </Link>
               ))}
+              <ThemeToggle />
             </div>
           </div>
         </div>

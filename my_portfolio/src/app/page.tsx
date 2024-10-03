@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { ThemeProvider, useTheme } from "./contexts/ThemeContexts";
+import { ThemeToggle } from "./components/ThemeToggle";
 //import { ArrowRight } from "lucide-react";
 
 interface TypingEffectResult {
@@ -36,6 +38,7 @@ export default function Home() {
     "Hello, my name is Levi Mickelson",
     125
   );
+  const { theme } = useTheme();
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 flex flex-col">
       <nav className="bg-gray-800 bg-opacity-50 backdrop-blur-md">
@@ -54,6 +57,7 @@ export default function Home() {
                   {item}
                 </Link>
               ))}
+              <ThemeToggle />
             </div>
           </div>
         </div>

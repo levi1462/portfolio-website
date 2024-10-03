@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { ThemeProvider, useTheme } from "../contexts/ThemeContexts";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 interface TimelineItem {
   date: string;
@@ -290,7 +292,7 @@ export default function About() {
       ],
     },
   ];
-
+  const { theme } = useTheme();
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
       <nav className="bg-gray-800 bg-opacity-50 backdrop-blur-md sticky top-0 z-50">
@@ -314,6 +316,7 @@ export default function About() {
                   {item}
                 </Link>
               ))}
+              <ThemeToggle />
             </div>
           </div>
         </div>
