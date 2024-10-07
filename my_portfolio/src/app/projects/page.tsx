@@ -91,16 +91,29 @@ const projects: Project[] = [
 ];
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+  const { theme } = useTheme();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-800 rounded-lg shadow-xl p-6 flex flex-col h-full"
+      className={`${
+        theme === "dark" ? "bg-gray-800" : "bg-white"
+      } rounded-lg shadow-xl p-6 flex flex-col h-full`}
     >
-      <h3 className="text-2xl font-bold text-teal-400 mb-4">{project.title}</h3>
-      <ul className="text-gray-300 mb-4 list-disc pl-5 flex-grow">
+      <h3
+        className={`text-2xl font-bold ${
+          theme === "dark" ? "text-teal-400" : "text-blue-600"
+        } mb-4`}
+      >
+        {project.title}
+      </h3>
+      <ul
+        className={`${
+          theme === "dark" ? "text-gray-300" : "text-gray-600"
+        } mb-4 list-disc pl-5 flex-grow`}
+      >
         {project.description.map((item, idx) => (
           <li key={idx} className="mb-2">
             {item}
@@ -111,7 +124,11 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         {project.technologies.map((tech, idx) => (
           <span
             key={idx}
-            className="bg-gray-700 text-teal-400 text-xs px-2 py-1 rounded"
+            className={`${
+              theme === "dark"
+                ? "bg-gray-700 text-teal-400"
+                : "bg-blue-100 text-blue-600"
+            } text-xs px-2 py-1 rounded`}
           >
             {tech}
           </span>
@@ -122,7 +139,11 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-teal-400 hover:text-teal-300 transition duration-300 flex items-center"
+          className={`${
+            theme === "dark"
+              ? "text-teal-400 hover:text-teal-300"
+              : "text-blue-600 hover:text-blue-700"
+          } transition duration-300 flex items-center`}
         >
           <Github className="w-5 h-5 mr-2" />
           View on GitHub
@@ -150,16 +171,28 @@ export default function () {
       className={`min-h-screen ${
         theme === "dark"
           ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700"
-          : "bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300"
+          : "bg-gradient-to-br from-blue-50 via-white to-purple-50"
       }`}
     >
-      <nav className="bg-gray-800 bg-opacity-50 backdrop-blur-md sticky top-0 z-50">
+      <nav
+        className={`${
+          theme === "dark"
+            ? "bg-gray-800 bg-opacity-50"
+            : "bg-white bg-opacity-90"
+        } backdrop-blur-md sticky top-0 z-50 shadow-sm`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="text-2xl font-bold relative group">
                 <span className="absolute inset-0 bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg"></span>
-                <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-teal-400 group-hover:from-teal-400 group-hover:via-blue-500 group-hover:to-purple-600 transition-all duration-300">
+                <span
+                  className={`relative bg-clip-text text-transparent ${
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-teal-400 to-teal-400 group-hover:from-teal-400 group-hover:via-blue-500 group-hover:to-purple-600"
+                      : "bg-gradient-to-r from-blue-600 to-purple-600 group-hover:from-blue-400 group-hover:via-purple-500 group-hover:to-pink-500"
+                  } transition-all duration-300`}
+                >
                   LM
                 </span>
               </Link>
@@ -169,7 +202,11 @@ export default function () {
                 <Link
                   key={item}
                   href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:bg-gray-700 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out transform hover:scale-105"
+                  className={`${
+                    theme === "dark"
+                      ? "text-gray-300 hover:bg-gray-700 hover:text-teal-400"
+                      : "text-gray-600 hover:bg-gray-100 hover:text-blue-600"
+                  } px-3 py-2 rounded-md text-sm font-medium transition duration-300 ease-in-out transform hover:scale-105`}
                 >
                   {item}
                 </Link>
@@ -181,7 +218,11 @@ export default function () {
       </nav>
 
       <main className="max-w-3xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-white mb-6 text-center">
+        <h1
+          className={`text-4xl font-bold ${
+            theme === "dark" ? "text-white" : "text-gray-800"
+          } mb-6 text-center`}
+        >
           My Projects
         </h1>
 
@@ -193,9 +234,19 @@ export default function () {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 text-sm font-medium ${
                   selectedCategory === category
-                    ? "bg-teal-400 text-gray-900"
-                    : "bg-gray-800 text-teal-400 hover:bg-gray-700"
-                } border border-gray-700 first:rounded-l-md last:rounded-r-md focus:z-10 focus:ring-2 focus:ring-teal-400 transition-all duration-300`}
+                    ? theme === "dark"
+                      ? "bg-teal-400 text-gray-900"
+                      : "bg-blue-600 text-white"
+                    : theme === "dark"
+                    ? "bg-gray-800 text-teal-400 hover:bg-gray-700"
+                    : "bg-white text-blue-600 hover:bg-gray-100"
+                } border ${
+                  theme === "dark" ? "border-gray-700" : "border-gray-200"
+                } first:rounded-l-md last:rounded-r-md focus:z-10 focus:ring-2 ${
+                  theme === "dark"
+                    ? "focus:ring-teal-400"
+                    : "focus:ring-blue-400"
+                } transition-all duration-300`}
               >
                 {category}
               </button>
@@ -222,7 +273,11 @@ export default function () {
         <div className="mt-12 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-teal-400 hover:bg-teal-500 transition duration-300 ease-in-out transform hover:scale-105"
+            className={`inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md ${
+              theme === "dark"
+                ? "text-gray-900 bg-teal-400 hover:bg-teal-500"
+                : "text-white bg-blue-600 hover:bg-blue-700"
+            } transition duration-300 ease-in-out transform hover:scale-105`}
           >
             Get in Touch
             <ArrowRight className="ml-2 -mr-1 w-5 h-5" />
