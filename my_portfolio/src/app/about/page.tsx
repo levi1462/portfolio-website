@@ -446,9 +446,9 @@ export default function About() {
             Beyond coding, I enjoy spending time with my two cats, learning to
             play guitar, and experimenting with new recipes in the kitchen. I
             also enjoy running, lifting, and playing sports to stay active, and
-            when I'm not moving, you&apos;ll likely find me deep in a good book,
-            TV show or working on a new website idea. Lately, I&apos;ve been
-            fascinated by AI and machine learning, and I love exploring how
+            when I&apos;m not moving, you&apos;ll likely find me deep in a good
+            book, TV show or working on a new website idea. Lately, I&apos;ve
+            been fascinated by AI and machine learning, and I love exploring how
             these technologies can be used to solve real-world problems—like
             enhancing stock market predictions. Whether it&apos;s diving into
             tech trends or taking on a personal challenge, I&apos;m always
