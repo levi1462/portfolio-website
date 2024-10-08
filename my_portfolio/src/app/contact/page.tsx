@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Mail, Github, Linkedin, ArrowRight } from "lucide-react";
-import { ThemeProvider, useTheme } from "../contexts/ThemeContexts";
+import { useTheme } from "../contexts/ThemeContexts";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 export default function Contact() {

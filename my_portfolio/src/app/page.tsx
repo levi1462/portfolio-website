@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ThemeProvider, useTheme } from "./contexts/ThemeContexts";
+import { useTheme } from "./contexts/ThemeContexts";
 import { ThemeToggle } from "./components/ThemeToggle";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Menu } from "lucide-react";
 
 interface TypingEffectResult {
   displayedText: string;
@@ -39,6 +39,8 @@ export default function Home() {
     125
   );
   const { theme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div
       className={`min-h-screen flex flex-col ${
@@ -67,7 +69,7 @@ export default function Home() {
                 LM
               </span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               {["About", "Projects", "Contact"].map((item) => (
                 <Link
                   key={item}
@@ -83,14 +85,47 @@ export default function Home() {
               ))}
               <ThemeToggle />
             </div>
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                } hover:text-gray-900 focus:outline-none focus:text-gray-900`}
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
           </div>
         </div>
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {["About", "Projects", "Contact"].map((item) => (
+                <Link
+                  key={item}
+                  href={`/${item.toLowerCase()}`}
+                  className={`${
+                    theme === "dark"
+                      ? "text-gray-300 hover:bg-gray-700 hover:text-teal-400"
+                      : "text-gray-600 hover:bg-gray-100 hover:text-blue-600"
+                  } block px-3 py-2 rounded-md text-base font-medium`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              ))}
+              <div className="px-3 py-2">
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
-      <main className="flex-grow flex items-center justify-center px-4">
+      <main className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1
-            className={`text-5xl font-bold mb-6 h-20 min-h-[5rem] ${
+            className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 min-h-[5rem] ${
               theme === "dark" ? "text-white" : "text-gray-800"
             }`}
           >
@@ -105,14 +140,14 @@ export default function Home() {
             </span>
             {!isTypingComplete && (
               <span
-                className={`inline-block w-1 h-10 ml-1 ${
+                className={`inline-block w-1 h-8 sm:h-10 ml-1 ${
                   theme === "dark" ? "bg-teal-400" : "bg-blue-600"
                 } animate-blink`}
               ></span>
             )}
           </h1>
           <h3
-            className={`text-2xl mt-4 opacity-80 ${
+            className={`text-xl sm:text-2xl mt-4 opacity-80 ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -125,14 +160,14 @@ export default function Home() {
                   theme === "dark"
                     ? "border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-gray-900"
                     : "border-blue-600 text-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white"
-                } px-6 py-3 rounded-full font-semibold transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                } px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
                   theme === "dark"
                     ? "focus:ring-teal-400"
                     : "focus:ring-blue-400"
                 } flex items-center`}
               >
                 More About Me
-                <ArrowRight className="ml-2 -mr-1 w-5 h-5" />
+                <ArrowRight className="ml-2 -mr-1 w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </Link>
           </div>
