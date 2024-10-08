@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTheme } from "./contexts/ThemeContexts";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { ArrowRight, Menu } from "lucide-react";
-
+// tests
 function useTypingEffect(text: string, speed: number = 50) {
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
