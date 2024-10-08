@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { ThemeProvider, useTheme } from "../contexts/ThemeContexts";
+import { useTheme } from "../contexts/ThemeContexts";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { ArrowRight } from "lucide-react";
 
@@ -180,7 +180,7 @@ const ProjectCard: React.FC<Project> = ({
   description,
   technologies,
 }) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  //const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
@@ -296,13 +296,14 @@ export default function About() {
   ];
 
   const skills = [
-    { skill: "Java", level: 90 },
+    { skill: "Java", level: 85 },
     { skill: "Spring Boot", level: 85 },
-    { skill: "JavaScript", level: 90 },
-    { skill: "React", level: 85 },
-    { skill: "Python", level: 80 },
-    { skill: "Docker", level: 75 },
-    { skill: "Kubernetes", level: 70 },
+    { skill: "JavaScript", level: 80 },
+    { skill: "React", level: 70 },
+    { skill: "Next.js", level: 60 },
+    { skill: "Python", level: 70 },
+    { skill: "Docker", level: 60 },
+    { skill: "Kubernetes", level: 45 },
   ];
 
   const projects = [
@@ -426,26 +427,31 @@ export default function About() {
           } mb-12`}
         >
           <p className="mb-4">
-            Hello! I'm Levi Mickelson, a passionate full-stack developer with a
-            strong foundation in both front-end and back-end technologies. I
-            graduated from Binghamton University with a Bachelor of Science in
-            Computer Science, achieving a GPA of 3.49/4.00 and making the Dean's
-            List multiple times.
+            Hello! a passionate full-stack developer with expertise in both
+            front-end and back-end technologies. I hold a Bachelor of Science in
+            Computer Science from Binghamton University, where I achieved a GPA
+            of 3.49/4.00 and earned a spot on the Dean's List multiple times.
           </p>
           <p className="mb-4">
-            My journey in the world of programming began during my university
-            years and has since evolved into a professional career where I've
-            worked on a variety of projects, from digital banking platforms to
-            social event applications. I'm constantly learning and adapting to
-            new technologies and methodologies in the ever-evolving tech
+            My journey into the world of programming began in college, and it
+            has since blossomed into a professional career. I've worked on a
+            wide range of projects, from digital banking platforms to social
+            event applications, where I've honed my skills in creating dynamic,
+            user-centered solutions. I thrive on learning new technologies and
+            methodologies, staying adaptable in the constantly changing tech
             landscape.
           </p>
           <p className="mb-4">
-            When I'm not coding, you can find me exploring new technologies,
-            contributing to open-source projects, or diving into a good book on
-            the latest tech innovations. I'm always excited to take on new
-            challenges and create efficient, user-friendly applications that
-            make a difference.
+            Beyond coding, I enjoy spending time with my two cats, learning to
+            play guitar, and experimenting with new recipes in the kitchen. I
+            also enjoy running, lifting, and playing sports to stay active, and
+            when I'm not moving, you'll likely find me deep in a good book, TV
+            show or working on a new website idea. Lately, I've been fascinated
+            by AI and machine learning, and I love exploring how these
+            technologies can be used to solve real-world problems—like enhancing
+            stock market predictions. Whether it's diving into tech trends or
+            taking on a personal challenge, I'm always excited to keep learning
+            and growing.
           </p>
         </div>
         <div className="text-center mt-16">
@@ -457,7 +463,7 @@ export default function About() {
             Want to know more?
           </h2>
           <a
-            href="/my_resume.pdf"
+            href="/api/view-cv"
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center px-6 py-3 border-2 text-lg font-medium rounded-md ${

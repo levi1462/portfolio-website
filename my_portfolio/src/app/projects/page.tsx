@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ArrowRight } from "lucide-react";
-import { ThemeProvider, useTheme } from "../contexts/ThemeContexts";
+import { useTheme } from "../contexts/ThemeContexts";
 import { ThemeToggle } from "../components/ThemeToggle";
 
 interface Project {
@@ -85,7 +85,7 @@ const projects: Project[] = [
       "Incorporated smooth animations and transitions for enhanced user experience.",
     ],
     technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-    githubUrl: "https://github.com/yourusername/portfolio-website",
+    githubUrl: "https://github.com/levi1462/portfolio-website",
     category: "Web Design",
   },
 ];
@@ -153,7 +153,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   );
 };
 
-export default function () {
+export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const categories = [
     "All",
