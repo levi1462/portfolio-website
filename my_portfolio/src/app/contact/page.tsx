@@ -84,8 +84,8 @@ export default function Contact() {
           } mb-12`}
         >
           <p className="mb-6 text-center">
-            I'm always open to new opportunities and collaborations. Feel free
-            to reach out!
+            I&apos;m always open to new opportunities and collaborations. Feel
+            free to reach out!
           </p>
           <div className="space-y-6">
             <div className="flex items-center justify-center">

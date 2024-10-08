@@ -427,31 +427,32 @@ export default function About() {
           } mb-12`}
         >
           <p className="mb-4">
-            Hello! a passionate full-stack developer with expertise in both
-            front-end and back-end technologies. I hold a Bachelor of Science in
-            Computer Science from Binghamton University, where I achieved a GPA
-            of 3.49/4.00 and earned a spot on the Dean's List multiple times.
+            Hello! I&apos;m Levi Mickelson, a passionate full-stack developer
+            with expertise in both front-end and back-end technologies. I hold a
+            Bachelor of Science in Computer Science from Binghamton University,
+            where I achieved a GPA of 3.49/4.00 and earned a spot on the
+            Dean&apos;s List multiple times.
           </p>
           <p className="mb-4">
             My journey into the world of programming began in college, and it
-            has since blossomed into a professional career. I've worked on a
-            wide range of projects, from digital banking platforms to social
-            event applications, where I've honed my skills in creating dynamic,
-            user-centered solutions. I thrive on learning new technologies and
-            methodologies, staying adaptable in the constantly changing tech
-            landscape.
+            has since blossomed into a professional career. I&apos;ve worked on
+            a wide range of projects, from digital banking platforms to social
+            event applications, where I&apos;ve honed my skills in creating
+            dynamic, user-centered solutions. I thrive on learning new
+            technologies and methodologies, staying adaptable in the constantly
+            changing tech landscape.
           </p>
           <p className="mb-4">
             Beyond coding, I enjoy spending time with my two cats, learning to
             play guitar, and experimenting with new recipes in the kitchen. I
             also enjoy running, lifting, and playing sports to stay active, and
-            when I'm not moving, you'll likely find me deep in a good book, TV
-            show or working on a new website idea. Lately, I've been fascinated
-            by AI and machine learning, and I love exploring how these
-            technologies can be used to solve real-world problems—like enhancing
-            stock market predictions. Whether it's diving into tech trends or
-            taking on a personal challenge, I'm always excited to keep learning
-            and growing.
+            when I'm not moving, you&apos;ll likely find me deep in a good book,
+            TV show or working on a new website idea. Lately, I&apos;ve been
+            fascinated by AI and machine learning, and I love exploring how
+            these technologies can be used to solve real-world problems—like
+            enhancing stock market predictions. Whether it&apos;s diving into
+            tech trends or taking on a personal challenge, I&apos;m always
+            excited to keep learning and growing.
           </p>
         </div>
         <div className="text-center mt-16">
