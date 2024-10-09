@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../contexts/ThemeContexts";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Award } from "lucide-react";
 
 interface TimelineItem {
   date: string;
@@ -260,6 +260,81 @@ const ProjectCard: React.FC<Project> = ({
   );
 };
 
+interface Certificate {
+  name: string;
+  issuer: string;
+  date: string;
+  description: string;
+}
+
+const CertificateCard: React.FC<Certificate> = ({
+  name,
+  issuer,
+  date,
+  description,
+}) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`${
+        theme === "dark" ? "bg-gray-800" : "bg-white"
+      } rounded-lg shadow-xl p-6 mb-6 transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <div className="flex items-center mb-4">
+        <Award
+          className={`w-6 h-6 ${
+            theme === "dark" ? "text-teal-400" : "text-blue-600"
+          } mr-2`}
+        />
+        <h3
+          className={`text-xl font-bold ${
+            theme === "dark" ? "text-teal-400" : "text-blue-600"
+          }`}
+        >
+          {name}
+        </h3>
+      </div>
+      <p
+        className={`text-sm ${
+          theme === "dark" ? "text-gray-400" : "text-gray-600"
+        } mb-2`}
+      >
+        {issuer} • {date}
+      </p>
+      <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>
+        {description}
+      </p>
+    </div>
+  );
+};
+
 export default function About() {
   const timeline = [
     {
@@ -357,7 +432,19 @@ export default function About() {
       ],
     },
   ];
+
+  const certificates = [
+    {
+      name: "Docker Foundations Professional Certificate",
+      issuer: "LinkedIn & Docker",
+      date: "August 2024",
+      description:
+        "Provides hands-on training in containerization, image creation, and Dockerfile usage. The course equips learners with the skills to efficiently build, deploy, and manage applications in Docker environments, preparing them for real-world containerization projects.",
+    },
+  ];
+
   const { theme } = useTheme();
+
   return (
     <div
       className={`min-h-screen ${
@@ -526,6 +613,19 @@ export default function About() {
         >
           {skills.map((skill, index) => (
             <SkillBar key={index} {...skill} />
+          ))}
+        </div>
+
+        <h2
+          className={`text-3xl font-semibold ${
+            theme === "dark" ? "text-teal-400" : "text-blue-600"
+          } mt-12 mb-6`}
+        >
+          Certificates
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {certificates.map((cert, index) => (
+            <CertificateCard key={index} {...cert} />
           ))}
         </div>
 
