@@ -13,12 +13,52 @@ interface Project {
   description: string[];
   technologies: string[];
   githubUrl?: string;
+  websiteUrl?: string;
   category: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
+    title: "Golf PDI Website/App",
+    description: [
+      "Developed high-performance React components with a focus on responsive design and user experience",
+      "Implemented backend code in Node.js that efficently manages data between the database and website allowing for a seemless user experince",
+      "Integrated Stripe into the website/app allowing Golf PDI to transition to a subscription based buisness model",
+      "Created a notification service in the application using Firebase Cloud Messaging allowing the company to reach its users through notifications",
+    ],
+    technologies: ["React", "TypeScript", "JavaScript", "Node.js", "Prisma", "SQL", "Stripe", "Firebase", "Cypress"],
+    websiteUrl: "https://golfpdi.com/",
+    category: "Web Design",
+  },
+  {
+    id: 2,
+    title: "CFCU Digital Banking Website/App",
+    description: [
+      "Designed and developed new features on CFCU's digital banking app and website",
+      "Engineered a social event platform for CFCU employee's to see and register for CFCU hosted events",
+      "Implemented features like the ATM Locator and check image display; Along with user reward, credit card, and loan management features",
+      "Designed efficently and securely with the user experience in mind",
+    ],
+    technologies: ["React", "JavaScript", "CSS", "HTML", "Java", "Spring Boot"],
+    websiteUrl: "https://www.mycfcu.com/",
+    category: "Web Design",
+  },
+  {
+    id: 3,
+    title: "Responsive Portfolio Website",
+    description: [
+      "Designed and developed a personal portfolio website using React and Next.js.",
+      "Implemented responsive design principles to ensure optimal viewing across all devices.",
+      "Utilized Tailwind CSS for efficient and consistent styling.",
+      "Incorporated smooth animations and transitions for enhanced user experience.",
+    ],
+    technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+    githubUrl: "https://github.com/levi1462/portfolio-website",
+    category: "Web Design",
+  },
+  {
+    id: 4,
     title: "Kubernetes Chaos Engineering",
     description: [
       "Implemented and containerized a live chat application using Python Flask, MongoDB, and Docker.",
@@ -38,7 +78,7 @@ const projects: Project[] = [
     category: "Programming",
   },
   {
-    id: 2,
+    id: 5,
     title: "Python Socket Programming",
     description: [
       "Engineered a multi-threaded proxy and webserver using Python socket programming.",
@@ -55,7 +95,7 @@ const projects: Project[] = [
     category: "Programming",
   },
   {
-    id: 3,
+    id: 6,
     title: "Stock Market Price Prediction using RNNs",
     description: [
       "Implemented and extended a research paper on stock market prediction using PyTorch and NumPy.",
@@ -74,19 +114,6 @@ const projects: Project[] = [
     ],
     githubUrl: "https://github.com/yourusername/stock-market-prediction-rnn",
     category: "Machine Learning",
-  },
-  {
-    id: 4,
-    title: "Responsive Portfolio Website",
-    description: [
-      "Designed and developed a personal portfolio website using React and Next.js.",
-      "Implemented responsive design principles to ensure optimal viewing across all devices.",
-      "Utilized Tailwind CSS for efficient and consistent styling.",
-      "Incorporated smooth animations and transitions for enhanced user experience.",
-    ],
-    technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-    githubUrl: "https://github.com/levi1462/portfolio-website",
-    category: "Web Design",
   },
 ];
 
@@ -147,6 +174,21 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         >
           <Github className="w-5 h-5 mr-2" />
           View on GitHub
+        </a>
+      )}
+      {project.websiteUrl && (
+        <a
+          href={project.websiteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${
+            theme === "dark"
+              ? "text-teal-400 hover:text-teal-300"
+              : "text-blue-600 hover:text-blue-700"
+          } transition duration-300 flex items-center`}
+        >
+          <Github className="w-5 h-5 mr-2" />
+          View Website
         </a>
       )}
     </motion.div>
