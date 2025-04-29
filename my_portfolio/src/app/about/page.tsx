@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../contexts/ThemeContexts";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { ArrowRight, Award } from "lucide-react";
+import { title } from "process";
 
 interface TimelineItem {
   date: string;
@@ -338,7 +339,20 @@ const CertificateCard: React.FC<Certificate> = ({
 export default function About() {
   const timeline = [
     {
-      date: "January 2023 - Present",
+      date: "December 2024 - Present",
+      title: "Junior Full-Stack Developer",
+      company: "Golf PDI",
+      description: [
+        "Contributed to a data-driven golf assessment system that measures, analyzes, and guides athlete development.",
+        "Developed responsive UI components utilizing React, TypeScript, JavaScript, and Redux to deliver intuitive user experiences and seamless front-end functionality.",
+        "Constructed robust API endpoints within a Node.js-based system using Prisma ORM and SQL stored procedures to optimize database operations and performance.",
+        "Integrated Stripe API for subscription-based services, implementing secure backend payment processing solutions and corresponding database architecture changes.",
+        "Engineered Firebase Cloud Messaging integration for real-time notifications, developing endpoints for message delivery and user data management.",
+        "Utilized Azure DevOps and Git for version control throughout the development lifecycle, ensuring code quality and efficient collaboration"
+      ]
+    },
+    {
+      date: "January 2023 - December 2024",
       title: "Application Developer",
       company: "CFCU Community Credit Union",
       description: [
@@ -373,8 +387,10 @@ export default function About() {
   const skills = [
     { skill: "Java", level: 85 },
     { skill: "Spring Boot", level: 85 },
+    {skill: "Node.js", level: 80},
+    {skill: "TypeScript", level: 80},
     { skill: "JavaScript", level: 80 },
-    { skill: "React", level: 70 },
+    { skill: "React", level: 75 },
     { skill: "Next.js", level: 60 },
     { skill: "Python", level: 70 },
     { skill: "Docker", level: 60 },

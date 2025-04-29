@@ -10,7 +10,7 @@ export default function Contact() {
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("levi.mickelson@example.com");
+    navigator.clipboard.writeText("levimickelson6@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -96,7 +96,7 @@ export default function Contact() {
                   }`}
                 />
               </div>
-              <span className="text-lg ml-4">levi.mickelson6@gmail.com</span>
+              <span className="text-lg ml-4">levimickelson6@gmail.com</span>
               <button
                 onClick={copyEmail}
                 className={`${
