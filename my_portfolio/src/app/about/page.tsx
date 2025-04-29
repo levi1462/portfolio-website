@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../contexts/ThemeContexts";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { ArrowRight, Award } from "lucide-react";
-import { title } from "process";
 
 interface TimelineItem {
   date: string;
